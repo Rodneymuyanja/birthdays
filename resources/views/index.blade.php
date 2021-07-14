@@ -26,11 +26,25 @@
            <nav id="navbar" class="navbar" style="float:right; margin-left:600px; margin-top:40px;">
             <ul>
               <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+              <li><a class="nav-link scrollto" href="#about">Messages</a></li>
+              <li><a class="nav-link scrollto" href="#services" data-bs-toggle="modal" data-bs-target="#exampleModal">Friends</a></li>  
+              @guest
               <li><a class="nav-link scrollto" href="#about">About</a></li>
-              <li><a class="nav-link scrollto" href="#services">Friends</a></li>  
-               <li><a class="nav-link scrollto" href="#hero"><i class="bi bi-person-circle" style="font-size: 1.5rem; color: black; margin-left:3px;"></i></a></li>
-              <li><a class="nav-link scrollto" href="#about"><i class="bi bi-search" style="font-size: 1.5rem; color: black; margin-left:3px;"></i></a></li>
-              <li><a class="nav-link scrollto" href="#services"><i class="bi bi-bell" style="font-size: 1.5rem; color: black; margin-left:3px;"></i></a></li> 
+              <li><a class="nav-link scrollto" href="#hero"><i class="bi bi-person-circle" style="font-size: 1.5rem; color: black; margin-left:3px;"></i></a></li>
+              @endguest
+              <li><a class="nav-link scrollto" href="#hero"><i class="img" style="font-size: 1.5rem; color: black; margin-left:3px;"></i></a></li>
+              <img src=" {{Auth::user()->avatar}} " class="img position-relative" style="border-radius:50%; height:40px; width:40px">
+                <span class="position-relative top-0 start-0 translate-middle p-2 bg-success border border-light rounded-circle" style="font-size: .65rem">
+                  
+              </span>
+            </img>
+              <li><a class="nav-link scrollto" href="#about"><i class="bi bi-search" style="font-size: 1.5rem; color: black; margin-left:-15px;"></i></a></li>
+              <li><a class="nav-link scrollto  position-relative  " href="#services"><i class="bi bi-bell" style="font-size: 1.5rem; color: black; margin-left:0px;">
+                <span class="position-relative top-0 start-0 translate-middle badge rounded-pill bg-danger" style="font-size: .65rem">
+                 99+
+               
+              </span>
+              </i></a></li> 
             </ul>
               <i class="bi bi-list mobile-nav-toggle"></i>
           </nav>
@@ -69,11 +83,13 @@
               <h2><p style=";" data-aos="fade-up" data-aos-delay="80">hey this is your birthday and we don't need to prove ourselves to no one because we're who we are, so pick a leaf take the hats off</p></h2>
               <h2><p style=";" data-aos="fade-up" data-aos-delay="30">so happy birthday</p></h2>
 
+              
             </div>
-
-            <a class="getstarted scrollto text-centered" data-aos="fade-up" data-aos-delay="90"  href="#about" style="width:150px ; outline-color:black; margin-left:175px; margin-top:-150px; margin-bottom:100px;">Get Started...</a>
-
+            @guest
+            <a class="getstarted scrollto text-centered" data-aos="fade-up" data-aos-delay="90"  href="/redirect" style="width:150px ; outline-color:black; margin-left:175px; margin-top:-150px; margin-bottom:100px;">Get Started....</a>
+            @endguest
         </div>
+ 
         
         </div>
 
@@ -88,6 +104,43 @@
       
       </div>
     </div>
+    
+
+
+
+    
+
+    <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign Up with Google</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+      
+
+ 
+</div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+    <script>
+      var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
+      </script>
  @endsection
   
   
