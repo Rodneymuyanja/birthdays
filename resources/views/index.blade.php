@@ -27,7 +27,7 @@
             <ul>
               <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
               <li><a class="nav-link scrollto" href="#about">Messages</a></li>
-              <li><a class="nav-link scrollto" href="#services" data-bs-toggle="modal" data-bs-target="#exampleModal">Friends</a></li>  
+              <li><a class="nav-link scrollto" href="/friends" >Friends</a></li>  
               @guest
               <li><a class="nav-link scrollto" href="#about">About</a></li>
               <li><a class="nav-link scrollto" href="#hero"><i class="bi bi-person-circle" style="font-size: 1.5rem; color: black; margin-left:3px;"></i></a></li>

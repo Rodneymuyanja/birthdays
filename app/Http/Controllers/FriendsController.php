@@ -19,33 +19,27 @@ class FriendsController extends Controller
 
         $friends = userfriends::select('friends')->where('user', $username)->get()->toArray();
 
-        echo("..............");
-        print_r($friends);
-
-        echo("...........");
+       
         $c = 1;
         foreach($friends as $friend) {
-            echo("kkkkkkk");
-            print_r($friend);
-            echo("kkkkkkkk");
+           
             $friendDetails = friends::all()->where('name', $friend['friends']);
-            echo($c);
+            
             array_push($er, $friendDetails);
             $c++;
         }
 
         $k = 1;
-        foreach($er as $fd) {
+       /* foreach($er as $fd) {
             echo("*******");
             
             foreach($fd as $f){
                 print_r($f['name']);
             }
-            echo("*******");
-            echo($k);
+           
             $k++;
-        }
+        }*/
 
-        return view('index', compact('er','friendDetails'));
+        return view('friends', compact('er','friendDetails'));
     }
 }

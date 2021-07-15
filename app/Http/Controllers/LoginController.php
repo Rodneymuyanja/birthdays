@@ -10,15 +10,17 @@ class LoginController extends Controller
 {
     //
     public function redirectToProvider() {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->stateless()->redirect();
     }
 
     public function handleProviderCallback()
     {
         try {
-            $user = Socialite::driver('google')->user();
+            echo("hey");
+            $user = Socialite::driver('google')->stateless()->user();
         } catch (\Exception $e) {
-            return redirect('/q');
+            echo($e);
+           // return redirect('/q');
         }
         // only allow people with @company.com to login
         

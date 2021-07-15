@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/', function(){
+    return view('index');
+});
 
 Route::get('/redirect', 'LoginController@redirectToProvider');
 Route::get('/callback', 'LoginController@handleProviderCallback');
 
-Route::get('/', 'FriendsController@getFriends');
+Route::get('/friends', 'FriendsController@getFriends');

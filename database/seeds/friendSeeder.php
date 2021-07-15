@@ -13,14 +13,17 @@ class friendSeeder extends Seeder
     public function run()
     {
         //
-        friends::create([
-            'name'=>'winy mukimba',
-            'pets'=>'dogs',
-            'gifts'=>'baecation',
+        friends::create(
+        [
+            'name'=>'gary',
+            'comments'=>'gary, hes a nice guy honestly and i dont know alot about him but heyyyyyyyyyyyyy',
+            'pets'=>'pete',
+            'gifts'=>'cars',
             'cake'=>'chocolate and marshmallows',
-            'music'=>'yellow',
-            'movies'=>'friends',
+            'music'=>'rum and chun',
+            'movies'=>'endgame',
             'places'=>'anything better Uganda',
-        ]);
+        ]
+    );
     }
 }

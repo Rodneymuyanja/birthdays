@@ -13,9 +13,12 @@ class userfriendsSeeder extends Seeder
     public function run()
     {
         //
-        userfriends::create([
+        userfriends::create(
+       
+        [
             'user'=>'muyanja rodney',
-            'friends'=>'winy mukimba',
-        ]);
+            'friends'=>'gary',
+        ]
+    );
     }
 }
