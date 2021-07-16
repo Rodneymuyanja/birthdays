@@ -8,6 +8,6 @@ class friends extends Model
 {
     //
     protected $fillable = [
-        'name','comments', 'birthday', 'pets','gifts','cake','music','movies','places',
+        'name','comments', 'birthday', 'pets','gifts','cake','music','movies','places'
     ];
 }

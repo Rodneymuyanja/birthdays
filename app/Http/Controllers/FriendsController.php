@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\friends;
 use App\userfriends;
 use Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class FriendsController extends Controller
 {
+
+    protected $name; 
+
     public function getFriends(){
         $friends = array();
         $friendDetails = array();
@@ -30,16 +33,89 @@ class FriendsController extends Controller
         }
 
         $k = 1;
-       /* foreach($er as $fd) {
-            echo("*******");
-            
-            foreach($fd as $f){
-                print_r($f['name']);
-            }
-           
-            $k++;
-        }*/
+       
 
         return view('friends', compact('er','friendDetails'));
     }
+
+
+    public function addFriend(Request $request){
+        $friend      = new friends;
+        $friend->name = $request->name;
+        $friend->birthday = $request->birthday;
+        $friend->comments = $request->comments;
+
+        $friend->save();
+
+        $this->addUserAndFriend($request);
+        //setting global $name to name
+        $this->name = $this->setName($request);
+
+        return redirect()->back();
+        
+    }
+
+    public function editfriend(Request $request){
+
+        $fields = [
+            'pets'=>$request->pets,
+            'cake'=>$request->cake,
+            'places'=>$request->places,
+            
+            'music'=>$request->music,
+            'movies'=>$request->movies,
+            'gifts'=>$request->gifts,
+        ];
+
+        print_r($request->name);
+        //$friend = friends::find($request->name);
+       /* echo(".....................".$friend);
+        print_r($friend);*/
+        
+        /*$friend      = new friends;
+        $friend->pets = $request->pets;
+        $friend->update();*/
+
+
+       // $fname = $this->getName();
+
+        
+
+        DB::table('friends')->where('name', $request->name)->update($fields);
+        
+        //$editfriend = friends::where('name', $request->name)->update($fields);
+
+        print_r($request->name);
+        echo($request->name);
+        return redirect()->intended('friends');
+    }
+
+    public function getFriendsEdit($name) {
+        return view('editfriend', compact('name'));
+    }
+
+    /*updating the userandfriends table*/
+    protected function addUserAndFriend(Request $request){
+        $username = Auth::user()->name;
+        $friendname = $request->name;
+
+        $userAndfriend = new userfriends;
+
+        $userAndfriend->user = $username;
+        $userAndfriend->friends = $friendname;
+
+        $userAndfriend->save();
+    }
+
+    /**setting the name */
+    protected function setName(Request $request){
+        $name = $request->name;
+        return $name;
+    }
+
+    protected function getName(){
+        return $this->name;
+    }
+
+    
 }

@@ -31,8 +31,10 @@
                        </img>
                 </a>
                 <h3>{{$r['name']}}</h3>
+                
+
                 <h4>{{$r['pets']}}</h4>
-                <a class="nav-link scrollto" href="#" ><li><a class="nav-link scrollto" href="#hero"><i class="bi bi-person-x-fill" style="font-size: 1.5rem; color: red; margin-left:3px;"></i></a></li></a>
+                <a class="nav-link scrollto" href="#" ><li><a class="nav-link scrollto" href="{{URL::to('editfriend/'.$r['name'])}}" ><i class="bi bi-person-x-fill" style="font-size: 1.5rem; color: red; margin-left:3px;"></i></a></li></a>
                 
               </div>
             </div><!-- End testimonial item -->
@@ -50,14 +52,25 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+        <h5 class="modal-title" id="exampleModalToggleLabel">Add New friend</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form method="post" action="/addfriend">
+      @csrf
       <div class="modal-body">
-        Show a second modal and hide this one with the button below.
+          <label><h4>Friend's Name</h4></label>
+      <input class="form-control form-control-lg" id="name" name="name" type="text" placeholder="name" aria-label=".form-control-lg example" label="Friend Name"></input>
+      <label><h4>Birthday</h4></label>
+      <input class="form-control form-control-lg" id="birthday" name="birthday" type="date" placeholder="birthday" aria-label=".form-control-lg example">
+      <label><h4>Comments</h4></label>
+      <textarea class="form-control form-control-lg" id="comments" name="comments" placeholder="comments"></textarea>
       </div>
+      
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+        <button class="btn btn-primary" type="submit">Add</button>
+      
+        <button class="btn btn-primary" type="submit" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Tell us more</button>
+      </form>  
       </div>
     </div>
   </div>
@@ -66,79 +79,19 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel2">A little trivia about your friend</h5>
+        <h5 class="modal-title" id="exampleModalToggleLabel2"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
-      <section id="faq" class="faq section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Tell us more</h2>
-          <p>You can always tell us more about your friend whenever you find time.... we'll wait</p>
-        </div>
-
-        <div class="faq-list">
-          <ul>
-            <li data-aos="fade-up">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Does your friend have any pets? what's the name? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <p>
-                <input class="form-control form-control-lg" type="text" placeholder="pet name" aria-label=".form-control-lg example">
-
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Since we're planning their birthday, what kid of cake do they like?<i class="bi bi-egg-fried"></i> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                <input class="form-control form-control-lg" type="text" placeholder="cake kind and flavour" aria-label=".form-control-lg example">
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">What places do they like, somewhere you can take them?<i class="bi bi-image-fill"></i> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                <input class="form-control form-control-lg" type="text" placeholder="places" aria-label=".form-control-lg example">
-                </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">what kind of music are they into.....?<i class="bi bi-music-note-beamed"></i> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                <input class="form-control form-control-lg" type="text" placeholder="musics" aria-label=".form-control-lg example">
-               </p>
-              </div>
-            </li>
-
-            <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Movies they like....?<i class="bi bi-film"></i> <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                <input class="form-control form-control-lg" type="text" placeholder="movies" aria-label=".form-control-lg example">
-                </p>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-
-      </div>
-    </section><!-- End Frequently Asked Questions Section -->
-
+     
 
 
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+        <button class="btn btn-primary" type="submit">save changes</button>
+
       </div>
+      </form>
     </div>
   </div>
 </div>

@@ -21,3 +21,7 @@ Route::get('/redirect', 'LoginController@redirectToProvider');
 Route::get('/callback', 'LoginController@handleProviderCallback');
 
 Route::get('/friends', 'FriendsController@getFriends');
+
+Route::post('/addfriend', 'FriendsController@addFriend');
+Route::get('/editfriend/{name}', 'FriendsController@getFriendsEdit');
+Route::post('/editfriend', 'FriendsController@editfriend');
