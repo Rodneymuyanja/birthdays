@@ -68,25 +68,9 @@ class FriendsController extends Controller
         ];
 
         print_r($request->name);
-        //$friend = friends::find($request->name);
-       /* echo(".....................".$friend);
-        print_r($friend);*/
-        
-        /*$friend      = new friends;
-        $friend->pets = $request->pets;
-        $friend->update();*/
-
-
-       // $fname = $this->getName();
-
-        
-
+       
         DB::table('friends')->where('name', $request->name)->update($fields);
         
-        //$editfriend = friends::where('name', $request->name)->update($fields);
-
-        print_r($request->name);
-        echo($request->name);
         return redirect()->intended('friends');
     }
 
@@ -117,5 +101,11 @@ class FriendsController extends Controller
         return $this->name;
     }
 
-    
+    /**API methods */
+
+    public function index() {
+        $friends = friends::all();
+
+        
+    }
 }
