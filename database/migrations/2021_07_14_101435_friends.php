@@ -20,6 +20,8 @@ class Friends extends Migration
             $table->string('comments');
             $table->string('nick-name')->nullable();
             $table->string('birthday')->nullable();
+            $table->string('email')->nullable();
+            $table->string('message')->nullable();
             $table->string('pets')->nullable();
             $table->string('cake')->nullable();
             $table->string('gifts')->nullable();

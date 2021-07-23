@@ -25,3 +25,5 @@ Route::get('/friends', 'FriendsController@getFriends');
 Route::post('/addfriend', 'FriendsController@addFriend');
 Route::get('/editfriend/{name}', 'FriendsController@getFriendsEdit');
 Route::post('/editfriend', 'FriendsController@editfriend');
+Route::post('/addMessage', 'MessageController@addMessage');
+Route::get('/friend/{name}', 'MessageController@show');

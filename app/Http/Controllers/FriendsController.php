@@ -35,7 +35,7 @@ class FriendsController extends Controller
         $k = 1;
        
 
-        return view('friends', compact('er','friendDetails'));
+        return view('friends', compact('er','friendDetails','c'));
     }
 
 
@@ -61,15 +61,22 @@ class FriendsController extends Controller
             'pets'=>$request->pets,
             'cake'=>$request->cake,
             'places'=>$request->places,
-            
+            'email' => $request->email,
+            'message'=>$request->message, 
             'music'=>$request->music,
             'movies'=>$request->movies,
             'gifts'=>$request->gifts,
         ];
 
-        print_r($request->name);
-       
-        DB::table('friends')->where('name', $request->name)->update($fields);
+        $nonULLs = Array();
+
+        foreach($fields as $column => $value) {
+            if ($value != ""){
+                $nonULLs[$column] = $value;
+            }
+        }
+
+        DB::table('friends')->where('name', $request->name)->update($nonULLs);
         
         return redirect()->intended('friends');
     }

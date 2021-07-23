@@ -18,6 +18,7 @@ class Userfriends extends Migration
             $table->id();
             $table->string('user');
             $table->string('friends');
+            
             $table->timestamps();
         });
     }

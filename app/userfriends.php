@@ -8,6 +8,6 @@ class userfriends extends Model
 {
     //
     protected $fillable = [
-        'user','friends',
+        'user','friends'
     ];
 }

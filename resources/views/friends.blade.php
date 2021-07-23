@@ -4,12 +4,16 @@
 @section('content')
 
 <section id="testimonials" class="testimonials">
+
+
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Friends<li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"><i class=" bi-person-plus-fill" style="font-size: 1.5rem; color:green;"></i></a></li></h2>
-        </div>
 
+          
+        </div>
+        <h1 style="font-size: 3.5rem;"><div class="count-box" > <span data-purecounter-start="0" data-purecounter-end="{{$c}}" data-purecounter-duration="800" data-purecounter-delay="150" class="purecounter"></span>  <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"><i class=" bi-person-plus-fill" style="font-size: 1.5rem; color:green;"></i></a>
+        <p style="color:cornflowerblue;"><em>Friends</em></p></div></h1>
         <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
           
@@ -25,16 +29,14 @@
                 </p>
                 <a href="#">
                     <img src="assets/img/testimonials/kimono.png" class="testimonial-img position-relative" alt="">
-                    <span class="position-relative top-0 start-0 translate-middle p-2 bi bi-patch-check-fill" style="font-size: 1rem">
-                  
-                  </span>
+                    
                        </img>
                 </a>
-                <h3>{{$r['name']}}</h3>
-                
+                <a class="nav-link scrollto" href="{{URL::to('editfriend/'.$r['name'])}}" ><h3> {{$r['name']}}</h3></a>
+                  <?php $name = $r['name'];  echo($name);?>
 
                 <h4>{{$r['pets']}}</h4>
-                <a class="nav-link scrollto" href="#" ><li><a class="nav-link scrollto" href="{{URL::to('editfriend/'.$r['name'])}}" ><i class="bi bi-person-x-fill" style="font-size: 1.5rem; color: red; margin-left:3px;"></i></a></li></a>
+                <a class="nav-link scrollto" href="#" onclick="change()" name="name1" id="name1" value="{{$r['name']}}" data-bs-toggle="modal" data-bs-target="#message"><li><i class="bi bi-envelope-fill" style="font-size: 1.5rem; color: black; margin-left:3px;"></i></a></li></a>
                 
               </div>
             </div><!-- End testimonial item -->
@@ -43,6 +45,7 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
+
 
       </div>
     </section><!-- End Testimonials Section -->
@@ -68,43 +71,43 @@
       
       <div class="modal-footer">
         <button class="btn btn-primary" type="submit">Add</button>
-      
-        <button class="btn btn-primary" type="submit" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Tell us more</button>
       </form>  
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+
+    <!--modal-->
+
+
+     <!--message Modal -->
+<div class="modal fade" id="message" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel2"></h5>
+        
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Create a birthday Message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-     
-
-
+ 
+        <form action="/addMessage" method= "post">
+          @csrf
+          <p id ="p">heyy</p>
+         
+        
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">Create</button>
+          </div>  
+        </form>
       </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">save changes</button>
-
-      </div>
-      </form>
+      
     </div>
   </div>
 </div>
 
-    <!--modal-->
+
     
 </div>
-    <script>
-      var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
-      </script>
+ 
 @endsection    
